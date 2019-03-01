@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<litepal>
+
+    <dbname value="suit_weather" />
+
+    <version value="1" />
+
+    <list>
+        <mapping class="com.suitweather.android.db.Province" />
+        <mapping class="com.suitweather.android.db.City" />
+        <mapping class="com.suitweather.android.db.County" />
+    </list>
+
+</litepal>
