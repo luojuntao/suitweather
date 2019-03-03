@@ -2,9 +2,11 @@ package com.suitweather.android.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.suitweather.android.db.City;
 import com.suitweather.android.db.County;
 import com.suitweather.android.db.Province;
+import com.suitweather.android.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,6 +74,19 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
