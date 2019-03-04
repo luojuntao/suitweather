@@ -2,9 +2,8 @@ package com.suitweather.android.gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Basic {
+public class Update {
 
-    @SerializedName("location")
-    public String cityName;
-
+        @SerializedName("loc")
+        public String updateTime;
 }
