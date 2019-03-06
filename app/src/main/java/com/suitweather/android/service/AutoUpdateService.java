@@ -1,4 +1,4 @@
-package com.suitweather.android;
+package com.suitweather.android.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
