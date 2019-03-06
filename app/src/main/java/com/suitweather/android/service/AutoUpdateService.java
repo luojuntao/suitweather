@@ -68,7 +68,7 @@ public class AutoUpdateService extends Service {
         String weatherString = sharedPreferences.getString("weather", null);
         if (weatherString != null) {
             Weather weather = Utility.handleWeatherResponse(weatherString);
-            String weatherId = weather.basic.cityName;
+            String weatherId = weather.basic.weatherId;
             String weatherUrl = "https://free-api.heweather.net/s6/weather?location=" +
                     weatherId + "&key=2b2f8dd483064c2a984472f9b21080e1";
             HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
