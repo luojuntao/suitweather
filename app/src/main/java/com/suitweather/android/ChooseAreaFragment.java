@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.suitweather.android.db.City;
 import com.suitweather.android.db.County;
 import com.suitweather.android.db.Province;
+import com.suitweather.android.gson.Weather;
 import com.suitweather.android.util.HttpUtil;
 import com.suitweather.android.util.Utility;
 
@@ -92,10 +93,18 @@ public class ChooseAreaFragment extends Fragment {
                     queryCountise();
                 } else if (currentLevel == LEVEL_COUNTY) {
                     String weatherId = countyList.get(position).getCountyName();
-                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                    intent.putExtra("weather_id", weatherId);
-                    startActivity(intent);
-                    getActivity().finish();
+                    if (getActivity() instanceof MainActivity) {
+                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra("weather_id", weatherId);
+                        startActivity(intent);
+                        getActivity().finish();
+                    } else if (getActivity() instanceof WeatherActivity) {
+                        WeatherActivity weatherActivity = (WeatherActivity) getActivity();
+                        weatherActivity.drawerLayout.closeDrawers();
+                        weatherActivity.swipeRefresh.setRefreshing(true);
+                        weatherActivity.requestWeather(weatherId);
+                    }
+
                 }
             }
         });
