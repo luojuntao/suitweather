@@ -19,12 +19,11 @@ import android.widget.Toast;
 import com.suitweather.android.db.City;
 import com.suitweather.android.db.County;
 import com.suitweather.android.db.Province;
-import com.suitweather.android.gson.Weather;
 import com.suitweather.android.util.HttpUtil;
 import com.suitweather.android.util.Utility;
 
+
 import org.litepal.crud.DataSupport;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-import okhttp3.internal.Util;
 
 public class ChooseAreaFragment extends Fragment {
 
@@ -92,7 +90,7 @@ public class ChooseAreaFragment extends Fragment {
                     selectedCity = cityList.get(position);
                     queryCountise();
                 } else if (currentLevel == LEVEL_COUNTY) {
-                    String weatherId = countyList.get(position).getCountyName();
+                    String weatherId = countyList.get(position).getWeatherId();
                     if (getActivity() instanceof MainActivity) {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
