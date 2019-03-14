@@ -55,8 +55,9 @@ public class AutoUpdateService extends Service {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String bingPic = response.body().string();
+                String bingPicText = bingPic.replace("http://cn.bing.comhttps://s.cn.bing.net","http://cn.bing.com");
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
-                editor.putString("bing_pic", bingPic);
+                editor.putString("bing_pic", bingPicText);
                 editor.apply();
 
             }
